@@ -1,5 +1,7 @@
 package com.model2.mvc.service.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductBoard {
 
 	private int boardNo;
@@ -9,6 +11,8 @@ public class ProductBoard {
 	private String boardRegDate;
 	private int viewCount;
 	private int prodPrice;
+	private String fileName;
+	private MultipartFile uploadFile;
 
 
 
@@ -83,6 +87,26 @@ public class ProductBoard {
 
 	public void setProdPrice(int prodPrice) {
 		this.prodPrice = prodPrice;
+	}
+
+
+	public String getFileName() {
+		return fileName;
+	}
+
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
 	}
 
 

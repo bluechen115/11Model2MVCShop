@@ -7,7 +7,7 @@
 <mapper namespace="ProductMapper">
 	
 	<resultMap id="productSelectMap" type="product" >
-		<result property="fileName" column="image_file" jdbcType="VARCHAR"/>
+		<!-- <result property="fileName" column="image_file" jdbcType="VARCHAR"/> -->
 		<result property="manuDate" column="manufacture_day" jdbcType="VARCHAR"/>
 		<result property="price" column="price" jdbcType="NUMERIC"/>
 		<result property="prodDetail" column="prod_detail" jdbcType="VARCHAR"/>
@@ -88,7 +88,7 @@
 		prod_name,
 		manufacture_day,
 		price,
-		image_file,
+		<!-- image_file, -->
 		board_no,
 		sale_status)
 		
@@ -97,7 +97,7 @@
 		#{prodName:VARCHAR},
 		#{manuDate:VARCHAR},
 		#{price:NUMERIC},
-		#{fileName:VARCHAR},
+		<!-- #{fileName:VARCHAR}, -->
 		SEQ_PRODUCT_BOARD.currval,
 		#{saleStatus:CHAR})
 	</insert>
@@ -106,8 +106,8 @@
 		UPDATE PRODUCT 
 		SET prod_name=#{prodName:VARCHAR},
 		manufacture_day=#{manuDate:VARCHAR},
-		price=#{price:NUMERIC},
-		image_file=#{fileName} 
+		price=#{price:NUMERIC}
+		<!-- ,image_file=#{fileName}  -->
 		WHERE board_no=#{boardNo}
 	</update>
 	

@@ -34,26 +34,6 @@
     body {
             padding-top : 50px;
         }
-        
-     .thumbnailDiv{
-    				text-align: center;
-    }
-    
-    .thumbnailDiv img{
-    					width:180px;
-    					height:180px;
-    }
-    .form-inline{
-    				width:490px;
-    }
-    
-    .custom-checkbox{
-    					padding-top: 5px;
-    					padding-left: 5px;
-    }
-    .boardTitle{
-    			cursor:pointer;
-    }
   </style>
   <body>
     <jsp:include page="/layout/toolbar.jsp" />
@@ -72,12 +52,7 @@
 
         <div class="col-md-6 text-right">
           <form class="form-inline" name="detailForm">
-	
-			<div class="custom-control custom-checkbox" style="float:left;">
-			    <input type="checkbox" class="custom-control-input" id="thumbnailCheck">
-			    <label class="custom-control-label" for="defaultUnchecked">썸네일로 보기</label>
-			</div>
-			
+
             <div class="form-group">
               <select class="form-control" id="searchCondition" name="searchCondition">
                 <option value="0" ${ ! empty search.searchCondition && search.searchCondition==0 ? "selected" : "" }>글번호</option>
@@ -97,15 +72,11 @@
             <input type="hidden" id="currentPage" name="currentPage" value="" />
 
           </form>
-
-          
         </div>
-        
 
       </div>
 
-		<br/>
-      <table class="table table-hover table-striped" id="listTb">
+      <table class="table table-hover table-striped">
         <thead>
           <tr>
             <th align="center">글번호</th>
@@ -139,30 +110,6 @@
         </tbody>
 
       </table>
-     <br/>
-     <br/>
-      
-     <div class="row thumbnailRow" style="display:none;">
-        <c:set var="i" value="0" />
-           <c:forEach var="productBoard" items="${list}" >
-              <c:set var="i" value="${ i+1 }" />
-                <div class="col-sm-5 col-md-3 thumbnailDiv">
-                  <div class="thumbnail">
-                    <img class="img-circle" src="/images/uploadFiles/${productBoard.fileName}" alt="...">
-                    <div class="caption">
-                 	 <h3>${productBoard.title}</h3>
-                        <c:if test="${productBoard.boardNo == discount.discountBoard}">
-                          <img src="https://static1.squarespace.com/static/513f57ebe4b0970eaf232dec/t/5654b2eae4b05e28e38285cd/1448391403995/"
-                                        style="height:20px;width:20px;">
-                        </c:if>
-                  <p>${productBoard.boardDetail}</p>
-                  <p><a href="/product/getProduct?boardNo=${productBoard.boardNo}&menu=search" class="btn btn-primary" role="button">Button</a> 
-                  		<a href="#" class="btn btn-default" role="button">Button</a></p>
-                  </div>
-                </div>
-                </div>
-       </c:forEach>
-    </div>
 
     </div>
 
@@ -210,46 +157,6 @@
 				});
 			}
 		});
-	  
-	  /* 썸네일 체크박스 */
-	 
-	  $('#thumbnailCheck').on('click',function(){
-		  if($('#thumbnailCheck').is(":checked")){
-			  $('#listTb').css('display','none');
-			  $('.thumbnailRow').css('display','block');
-		  }else{
-			  $('#listTb').css('display','');
-			  $('.thumbnailRow').css('display','none');
-		  }
-	  });
-	  
-	  /* 무한스크롤 구현 및 페이지네비게이터 변경 */
-	  $(window).resize(function(){
-		 var windowWidth = $(window).width();
-		 var page = 2;
-		 
-		 if(windowWidth < 975){
-				
-			 if(!$('#thumbnailCheck').is(":checked")){
-				$('#thumbnailCheck').trigger("click");
-			 } //화면이 작아졌을 때, 썸네일 체크가 안되어 있으면 자동 체크.
-			 
-			$(window).scroll(function(){
-				if($(window).scrollTop() == $(document).height()-$(window).height()){
-					
-				}
-			});
-		 }
-		 
-	  });
-	  
-	  /* boardTitle 클릭 시 getProduct 실행 */
-	  /* manage와 search 수정해야함 */
-	  $('.boardTitle').on('click',function(){
-		 var value = $(this).parent().children('.boardNo').html();
-		 self.location = "/product/getProduct?menu=search&boardNo="+value;
-	  });
-	  
   </script>
   
 </html>

@@ -29,7 +29,6 @@ public class ProductInfo {
 	public Product getProduct() {
 		Product product = new Product();
 		product.setBoardNo(boardNo);
-		product.setFileName(fileName);
 		product.setManuDate(manuDate);
 		product.setPrice(price);
 		product.setProdName(prodName);
@@ -37,19 +36,20 @@ public class ProductInfo {
 		product.setProTranCode(proTranCode);
 		product.setResultPrice(resultPrice);
 		product.setSaleStatus(saleStatus);
-		product.setUploadFile(uploadFile);
 		
 		return product;
 	}
 	
 	public ProductBoard getProductBoard() {
 		ProductBoard productBoard = new ProductBoard();
+		productBoard.setFileName(fileName);
 		productBoard.setBoardDetail(boardDetail);
 		productBoard.setBoardRegDate(boardRegDate);
 		productBoard.setProdPrice(prodPrice);
 		productBoard.setQuantity(quantity);
 		productBoard.setTitle(title);
 		productBoard.setViewCount(viewCount);
+		productBoard.setUploadFile(uploadFile);
 		
 		return productBoard;
 	}

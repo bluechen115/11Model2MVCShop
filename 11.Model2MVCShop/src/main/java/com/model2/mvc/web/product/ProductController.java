@@ -93,16 +93,16 @@ public class ProductController {
 		String path = "C:\\Users\\USER\\git\\10Model2MVCShopAjax\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles\\";
 		
 		
-		MultipartFile uploadfile = product.getUploadFile();
+		MultipartFile uploadfile = productBoard.getUploadFile();
 		
 		UUID uuid = UUID.randomUUID();
 		String fileName = uuid+"_"+uploadfile.getOriginalFilename();
 		
 		
 		if(fileName.equals("")) {
-			product.setFileName(null);
+			productBoard.setFileName("no_detail_img.gif");
 		}else {
-			product.setFileName(fileName);
+			productBoard.setFileName(fileName);
 			
 			uploadfile.transferTo(new File(path+fileName));
 		}
@@ -158,9 +158,9 @@ public class ProductController {
 		}
 		product.setResultPrice(price);
 		
-		if(product.getFileName() == null) {
+		/*if(product.getFileName() == null) {
 			product.setFileName("no_detail_img.gif");
-		}
+		}*/
 		
 		//////////////Cookie//////////////////
 		Cookie[] cookies = request.getCookies();
@@ -258,7 +258,6 @@ public class ProductController {
 		
 		System.out.println("/updateProduct.do");
 		
-		System.out.println("fileName :: "+product.getFileName());
 		
 		productBoardService.modifyProductBoard(productBoard);
 		productService.updateProduct(product);

@@ -1,13 +1,12 @@
 package com.model2.mvc.service.domain;
 
-import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
 
 public class Product {
 	
-	private String fileName;
+//	private String fileName;
 	private String manuDate;
 	private int price;
 	private String prodName;
@@ -16,18 +15,18 @@ public class Product {
 	private int resultPrice;
 	private int boardNo;
 	private String saleStatus;
-	private MultipartFile uploadFile;
+//	private MultipartFile uploadFile;
 	
 	public Product(){
 	}
 
-	public String getFileName() {
+/*	public String getFileName() {
 		return fileName;
 	}
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
-	}
+	}*/
 
 	public String getManuDate() {
 		return manuDate;
@@ -93,20 +92,28 @@ public class Product {
 		this.saleStatus = saleStatus;
 	}
 
-	public MultipartFile getUploadFile() {
+
+/*	public MultipartFile getUploadFile() {
 		return uploadFile;
 	}
 
 	public void setUploadFile(MultipartFile uploadFile) {
 		this.uploadFile = uploadFile;
+	}*/
+	
+	@Override
+	public String toString() {
+		return "Product [manuDate=" + manuDate + ", price=" + price + ", prodName=" + prodName + ", prodNo=" + prodNo
+				+ ", proTranCode=" + proTranCode + ", resultPrice=" + resultPrice + ", boardNo=" + boardNo
+				+ ", saleStatus=" + saleStatus + "]";
 	}
 
-	@Override
+/*	@Override
 	public String toString() {
 		return "Product [fileName=" + fileName + ", manuDate=" + manuDate + ", price=" + price + ", prodName="
 				+ prodName + ", prodNo=" + prodNo + ", proTranCode=" + proTranCode + ", resultPrice=" + resultPrice
 				+ ", boardNo=" + boardNo + ", saleStatus=" + saleStatus + "]";
-	}
+	}*/
 
 	
 	

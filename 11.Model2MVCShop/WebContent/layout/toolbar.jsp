@@ -11,7 +11,7 @@
 	<div class="container">
 	       
 		<!-- <a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a> -->
-		<a class="navbar-brand" href="#" style="padding-top:12px;" ><img src="http://www.logospng.com/images/9/apple-logo-png-clipart-best-9849.png" style="width:22px;heigth:22px;"/></a>
+		<a class="navbar-brand" href="/index.jsp" style="padding-top:12px;" ><img src="http://www.logospng.com/images/9/apple-logo-png-clipart-best-9849.png" style="width:22px;heigth:22px;"/></a>
 		
 		<!-- toolBar Button Start //////////////////////// -->
 		<div class="navbar-header">
@@ -131,7 +131,6 @@
 		});
 		
 		$("a:contains('상 품 검 색')").on('click',function(){
-			alert("클릭");
 			self.location = "/product/listProduct?menu=search";
 		});
 		

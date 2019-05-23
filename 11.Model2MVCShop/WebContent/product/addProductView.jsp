@@ -8,14 +8,22 @@
 	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+ 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 	<link rel="stylesheet" href="/resources/demos/style.css">
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <title></title>
+    
+    <style type="text/css">
+    	body > div.container{
+        	border: 3px solid #D6CDB7;
+            margin-top: 10px;
+        }
+    </style>
+    
   </head>
   <body>
     <div class="navbar  navbar-default">
@@ -26,7 +34,7 @@
 
       <div class="container">
         <h1 class="bg-primary text-center">상품등록</h1>
-      </div>
+      
 
       <form class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group">
@@ -87,6 +95,7 @@
       </div>
 
     </form>
+    </div>
   </body>
 
   <script type="text/javascript">

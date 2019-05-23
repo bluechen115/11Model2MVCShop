@@ -14,6 +14,7 @@
 		<result property="boardRegDate" column="BOARD_REG_DATE" jdbcType="DATE"/>
 		<result property="viewCount" column="VIEW_COUNT" jdbcType="NUMERIC"/>
 		<result property="prodPrice" column="price" jdbcType="NUMERIC"/>
+		<result property="fileName" column="image_file" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	<resultMap id="DiscountSelectMap" type="discount">
@@ -29,14 +30,16 @@
 		BOARD_DETAIL,
 		QUANTITY,
 		BOARD_REG_DATE,
-		VIEW_COUNT)
+		VIEW_COUNT,
+		image_file)
 		VALUES
 		(SEQ_PRODUCT_BOARD.nextval,
 		#{title:VARCHAR},
 		#{boardDetail:VARCHAR},
 		#{quantity:NUMERIC},
 		sysdate,
-		#{viewCount:NUMERIC})
+		#{viewCount:NUMERIC},
+		#{fileName:VARCHAR})
 	</insert>
 	
 	<select id="getProductBoard" parameterType="int" resultMap="productBoardSelectMap">
@@ -93,7 +96,8 @@
 		SET
 		TITLE=#{title:VARCHAR},
 		BOARD_DETAIL = #{boardDetail:VARCHAR},
-		QUANTITY = #{quantity:NUMERIC} 
+		QUANTITY = #{quantity:NUMERIC},
+		image_file=#{fileName:VARCHAR} 
 		WHERE
 		BOARD_NO = #{boardNo}
 	</update>

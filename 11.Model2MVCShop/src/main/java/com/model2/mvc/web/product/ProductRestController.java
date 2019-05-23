@@ -117,8 +117,8 @@ public class ProductRestController {
 		}
 		product.setResultPrice(price);
 		
-		if(product.getFileName() == null) {
-			product.setFileName("no_detail_img.gif");
+		if(productBoard.getFileName() == null) {
+			productBoard.setFileName("no_detail_img.gif");
 		}
 		
 		Map<String, Object> resultMap = new HashMap<String,Object>();

@@ -71,6 +71,7 @@
         </div>
 
         <div class="col-md-6 text-right">
+        
           <form class="form-inline" name="detailForm">
 	
 			<div class="custom-control custom-checkbox" style="float:left;">
@@ -105,6 +106,67 @@
       </div>
 
 		<br/>
+		
+		<form class="form-inline" id="sortingForm" name="sortingForm">
+		<div id="searchDiv" class=" panel panel-primary" style="float:left;" > 
+			<div class="panel-heading"> 
+				<h3 class="panel-title">검색설정</h3> 
+			</div> 
+			<ul class="list-group">
+						 <li class="list-group-item" style="height: 130px;">
+						 	<a href="#">정렬</a>
+						 	<ul class="list-group">
+						 		<li class="list-group-item">
+						 			<div class="custom-control custom-radio">
+										<input type="radio" name="orderType" id="jb-radio-1" 
+												class="custom-control-input" value="1" ${search.orderType=='1'? "checked":""}>
+											<label class="custom-control-label" for="jb-radio-1">최근등록순</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" name="orderType" id="jb-radio-2" 
+												class="custom-control-input" value="2" ${search.orderType=='2'? "checked":""}>
+											<label class="custom-control-label" for="jb-radio-2">가격높은순</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" name="orderType" id="jb-radio-3" 
+												class="custom-control-input" value="3" ${search.orderType=='3'? "checked":""}>
+											<label class="custom-control-label" for="jb-radio-3">가격낮은순</label>
+									</div>
+								</li>
+						 	</ul>
+						 </li>
+						 <li class="list-group-item" style="height: 130px;">
+						 	<a href="#">보기</a>
+						 	<ul class="list-group">
+						 		<li class="list-group-item">
+						 			<div class="custom-control custom-radio">
+										<input type="radio" name="searchStatus" id="jb-radio-1" 
+												class="custom-control-input" value="0" ${search.searchStatus == '0' ? "checked":""}>
+											<label class="custom-control-label" for="jb-radio-1">모두</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" name="searchStatus" id="jb-radio-2" 
+												class="custom-control-input" value="1" ${search.searchStatus == '1' ? "checked":""}>
+											<label class="custom-control-label" for="jb-radio-2">판매중</label>
+									</div>
+									<div class="custom-control custom-radio">
+										<input type="radio" name="searchStatus" id="jb-radio-3" 
+												class="custom-control-input" value="2" ${search.searchStatus == '2' ? "checked":""}>
+											<label class="custom-control-label" for="jb-radio-3">재고없음</label>
+									</div>
+								</li>
+						 	</ul>
+						 </li>
+						<li class="list-group-item" style="text-align: center;">
+							<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn btn-success" id="checkBtn">확인</button>
+							</div>
+						</li>
+			</ul>
+		</div>
+		</form>
+		
+	<div class="col-md-10" style="float:left;">
       <table class="table table-hover table-striped" id="listTb">
         <thead>
           <tr>
@@ -139,6 +201,7 @@
         </tbody>
 
       </table>
+      </div>
      <br/>
      <br/>
       
@@ -216,9 +279,11 @@
 	  $('#thumbnailCheck').on('click',function(){
 		  if($('#thumbnailCheck').is(":checked")){
 			  $('#listTb').css('display','none');
+			  $('#searchDiv').css('display','none');
 			  $('.thumbnailRow').css('display','block');
 		  }else{
 			  $('#listTb').css('display','');
+			  $('#searchDiv').css('display','');
 			  $('.thumbnailRow').css('display','none');
 		  }
 	  });
@@ -248,6 +313,11 @@
 	  $('.boardTitle').on('click',function(){
 		 var value = $(this).parent().children('.boardNo').html();
 		 self.location = "/product/getProduct?menu=search&boardNo="+value;
+	  });
+	  
+	  /* sorting 버튼 manage, search 수정*/
+	  $('#checkBtn').on('click',function(){
+		$('#sortingForm').attr("method","POST").attr("action","/product/listProduct?menu=search").submit();
 	  });
 	  
   </script>

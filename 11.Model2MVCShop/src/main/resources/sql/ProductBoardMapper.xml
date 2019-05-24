@@ -72,6 +72,16 @@
 							<if test='searchCondition != null and searchCondition == "2"'>
 								AND UPPER(pb.BOARD_DETAIL) LIKE UPPER('%' || #{searchKeyword} || '%')
 							</if>
+							
+							<if test='searchStatus != null and searchStatus == "1"'>
+								AND QUANTITY > 0
+							</if>
+							
+							<if test='searchStatus != null and searchStatus == "2"'>
+								AND QUANTITY &lt; 1
+							</if>
+							
+							
 						</where>
 						<if test='orderType != null and orderType == "1"'>
 							ORDER BY pb.board_reg_date DESC

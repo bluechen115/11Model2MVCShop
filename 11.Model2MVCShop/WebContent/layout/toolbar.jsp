@@ -75,9 +75,9 @@
 	                     <ul class="dropdown-menu">
 	                         <li><a href="#">상 품 검 색</a></li>
 	                         
-	                        <%--  <c:if test="${sessionScope.user.role == 'user'}"> --%>
+	                         <c:if test="${sessionScope.user.role == 'user'}"> 
 	                           <li><a href="#">구매이력조회</a></li>
-	                      <%--    </c:if> --%>
+	                     	 </c:if>
 	                         
 	                         <li><a href="#">최근본상품</a></li>
 	                         <li class="divider"></li>
@@ -130,8 +130,20 @@
 			self.location = "../product/addProductView.jsp";
 		});
 		
+		$("a:contains('판매글 관리')").on('click',function(){
+			self.location = "/product/listProduct?menu=manage";
+		});
+		
 		$("a:contains('상 품 검 색')").on('click',function(){
 			self.location = "/product/listProduct?menu=search";
+		});
+		
+		$('a:contains("구매이력조회")').on('click',function(){
+			self.location = "/purchase/listPurchase";
+		});
+		
+		$('a:contains("상품배송관리")').on('click',function(){
+			self.location = "/purchase/listPurchase";
 		});
 		
 	</script>  

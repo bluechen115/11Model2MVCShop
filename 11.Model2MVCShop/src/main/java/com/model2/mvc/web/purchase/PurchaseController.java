@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
@@ -99,10 +100,10 @@ public class PurchaseController {
 		
 		model.addAttribute("purchase", purchase);
 		
-		return "forward:/purchase/successAddPurchase.jsp";
+		return "forward:/purchase/listPurchase.jsp";
 	}
 	
-	@RequestMapping("addPurchaseView")
+	@RequestMapping(value="addPurchaseView",method=RequestMethod.GET)
 	public String addPurchaseView(HttpSession session,
 									HttpServletRequest request,
 									@RequestParam("boardNo") int boardNo,

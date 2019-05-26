@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<!--<link rel="stylesheet" href="assets/css/colors/maron.css">-->
 
-	<!--Theme Responsive css-->
 	<link rel="stylesheet" href="assets/css/responsive.css" />
 
 	<script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -50,7 +49,7 @@
 </head>
 	
 <body>
-
+	<div style="position:relative;"> <!-- 화면 전체를 감싸는 div -->
 	<!-- ToolBar Start /////////////////////////////////////-->
 	<jsp:include page="/layout/toolbar.jsp" />
    	<!-- ToolBar End /////////////////////////////////////-->
@@ -80,16 +79,16 @@
   	 </div>
  -->
 
- 		<section id="hello" class="home bg-mega">
-			<div class="overlay">
-				<!-- <img alt="" src="https://t1.daumcdn.net/cfile/tistory/140829464E5E49D02D"
-					style="width:100%;height:auto;"/> -->
-			</div>
+ 		 <section id="hello" class="home bg-mega" style="position:relative; top:-20px; left:0;">
+			<!-- <div class="overlay">
+				<img alt="" src="https://t1.daumcdn.net/cfile/tistory/140829464E5E49D02D"
+					style="width:100%;height:auto;"/>
+			</div> -->
 			<div class="container">
 				<div class="row">
 					<div class="main_home">
-						<div class="home_text" style="padding-top: 230px;">
-							<h1 class="text-white">WE’RE <br /> CREATIVE DESIGNERS!</h1>
+						<div class="home_text" style="padding-top: 350px;">
+							<h1 class="text-white">WE’RE <br /> CREATIVE DEVELOPERS!</h1>
 						</div>
 
 						<div class="home_btns m-top-40">
@@ -98,12 +97,13 @@
 
 					</div>
 				</div>
-				<!--End off row-->
+				End off row
 			</div>
-			<!--End off container -->
+			End off container
 		</section>
-		<!--End off Home Sections-->
+		End off Home Sections 
 
+	</div>
 </body>
 
 </html>

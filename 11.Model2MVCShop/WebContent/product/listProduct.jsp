@@ -73,6 +73,8 @@
         <div class="col-md-6 text-right">
         
           <form class="form-inline" name="detailForm">
+          	
+          	<input type="hidden" id="currentPage" name="currentPage" value=""/>
 	
 			<div class="custom-control custom-checkbox" style="float:left;">
 			    <input type="checkbox" class="custom-control-input" id="thumbnailCheck">
@@ -81,9 +83,9 @@
 			
             <div class="form-group">
               <select class="form-control" id="searchCondition" name="searchCondition">
-                <option value="0" ${ ! empty search.searchCondition && search.searchCondition==0 ? "selected" : "" }>글번호</option>
-                <option value="1" ${ ! empty search.searchCondition && search.searchCondition==1 ? "selected" : "" }>글제목</option>
-                <option value="2" ${ ! empty search.searchCondition && search.searchCondition==2 ? "selected" : "" }>글내용</option>
+                <option value="0" ${!empty search.searchCondition && search.searchCondition=='0' ? "selected" : "" }>글번호</option>
+                <option value="1" ${!empty search.searchCondition && search.searchCondition=='1' ? "selected" : "" }>글제목</option>
+                <option value="2" ${!empty search.searchCondition && search.searchCondition=='2' ? "selected" : "" }>글내용</option>
               </select>
             </div>
 
@@ -93,9 +95,9 @@
                       value="${! empty search.searchKeyword ? search.searchKeyword : '' }"/>
             </div>
 
-            <button type="button" class="btn btn-default" name="button">검색</button>
+            <button type="button" class="btn btn-default" name="searchBtn">검색</button>
 
-            <input type="hidden" id="currentPage" name="currentPage" value="" />
+            <input type="hidden" id="currentPage" name="currentPage" value="${search.currentPage}" />
 
           </form>
 
@@ -241,13 +243,14 @@
 	/* url에서 search 나중에 manage도 추가 수정해야함 */
 	function fncGetList(currentPage) {
 		$("#currentPage").val(currentPage)
-		$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu=search").submit();
+		$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu=${menu}").submit();
 	}
 	
-	  $('#searchKeyword').on('keyup',function(){
+	   $('#searchKeyword').on('keyup',function(e){
 			var conditionFlag = $('#searchCondition').val();
-			var searchKeyword = $(this).val();
-			var param = {"searchKeyword":searchKeyword};
+			var searchKeyword = "";
+			searchKeyword = $(this).val();
+			
 			var values=[];
 			
 			
@@ -257,7 +260,7 @@
 					method:"POST",
 					
 					contentType: "application/json",
-					data:param,
+					data:{"searchKeyword":searchKeyword},
 					dataType:"json",
 					success:function(data){
 						availableTags = data;
@@ -272,7 +275,11 @@
 				      source: availableTags
 				});
 			}
-		});
+			
+			if(e.keyCode == 13){
+				$('button:button[name="searchBtn"]').trigger('click');
+			}
+		}); 
 	  
 	  /* 썸네일 체크박스 */
 	 
@@ -312,13 +319,20 @@
 	  /* manage와 search 수정해야함 */
 	  $('.boardTitle').on('click',function(){
 		 var value = $(this).parent().children('.boardNo').html();
-		 self.location = "/product/getProduct?menu=search&boardNo="+value;
+		 self.location = "/product/getProduct?menu=${menu}&boardNo="+value;
 	  });
 	  
 	  /* sorting 버튼 manage, search 수정*/
 	  $('#checkBtn').on('click',function(){
-		$('#sortingForm').attr("method","POST").attr("action","/product/listProduct?menu=search").submit();
+		$('#sortingForm').attr("method","POST").attr("action","/product/listProduct?menu=${menu}").submit();
 	  });
+	  
+	  /* 검색버튼 manage, search 수 */
+	  $('button:button[name="searchBtn"]').on('click',function(){
+		  $("form[name='detailForm']").attr("method","POST").attr("action","/product/listProduct?menu=${menu}").submit();
+	  });
+	  
+	 
 	  
   </script>
   

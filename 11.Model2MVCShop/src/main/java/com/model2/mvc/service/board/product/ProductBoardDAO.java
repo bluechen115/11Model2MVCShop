@@ -3,6 +3,7 @@ package com.model2.mvc.service.board.product;
 import java.util.List;
 
 import com.model2.mvc.common.Search;
+import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
 import com.model2.mvc.service.domain.ProductBoard;
 
@@ -30,4 +31,7 @@ public interface ProductBoardDAO {
 	
 	public List<ProductBoard> selectTitleByKeyword(String searchKeyword) throws Exception;
 	
+	public List<Comments> selectCommentsList(int boardNo) throws Exception;
+	
+	public void insertComments(Comments comments) throws Exception;
 }

@@ -189,15 +189,15 @@
 		<!--Home Sections-->
 
 		<section id="hello" class="home bg-mega">
-			<div class="overlay">
+			<!-- <div class="overlay">
 				<img alt="" src="https://t1.daumcdn.net/cfile/tistory/140829464E5E49D02D"
 					style="width:1920px;height:980px;"/>
-			</div>
+			</div> -->
 			<div class="container">
 				<div class="row">
 					<div class="main_home">
-						<div class="home_text" style="padding-top: 200px;">
-							<h1 class="text-white">WE¡¯RE <br /> CREATIVE DESIGNERS!</h1>
+						<div class="home_text" style="padding-top: 350px;">
+							<h1 class="text-white">WE¡¯RE <br /> CREATIVE DEVELOPERS!</h1>
 						</div>
 
 						<div class="home_btns m-top-40">

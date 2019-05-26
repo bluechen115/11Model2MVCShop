@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.model2.mvc.service.board.product.ProductBoardService;
+import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
 import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.domain.ProductBoard;
@@ -175,6 +176,12 @@ public class ProductRestController {
 		
 
 		return titleArray;
+	}
+	
+	@RequestMapping(value="json/addComments",method=RequestMethod.POST)
+	public void addComments(@ModelAttribute("comments")Comments comments) throws Exception{
+		System.out.println("addComments");
+		productBoardService.addComments(comments);
 	}
 		
 	

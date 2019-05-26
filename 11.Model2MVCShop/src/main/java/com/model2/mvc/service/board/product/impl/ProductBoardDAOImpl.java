@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.board.product.ProductBoardDAO;
+import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
 import com.model2.mvc.service.domain.ProductBoard;
 
@@ -25,7 +26,7 @@ public class ProductBoardDAOImpl implements ProductBoardDAO {
 
 	@Override
 	public void insertProductBoard(ProductBoard productBoard) throws Exception {
-		sqlSession.insert("ProductBoardMapper.insertProductBoard", productBoard);		
+		sqlSession.insert("ProductBoardMapper.insertProductBoard", productBoard);	
 	}
 
 	@Override
@@ -78,6 +79,16 @@ public class ProductBoardDAOImpl implements ProductBoardDAO {
 	@Override
 	public List<ProductBoard> selectTitleByKeyword(String searchKeyword) throws Exception {
 		return sqlSession.selectList("ProductBoardMapper.getTitleByKeyword", searchKeyword);
+	}
+
+	@Override
+	public List<Comments> selectCommentsList(int boardNo) throws Exception {
+		return sqlSession.selectList("ProductBoardMapper.selectCommentsList", boardNo);
+	}
+
+	@Override
+	public void insertComments(Comments comments) throws Exception {
+		sqlSession.insert("ProductBoardMapper.insertCommnets", comments);
 	}
 
 

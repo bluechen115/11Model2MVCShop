@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.board.product.ProductBoardDAO;
 import com.model2.mvc.service.board.product.ProductBoardService;
+import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
 import com.model2.mvc.service.domain.ProductBoard;
 
@@ -72,6 +73,16 @@ public class ProductBoardServiceImpl implements ProductBoardService {
 	@Override
 	public List<ProductBoard> getTitleByKeyword(String searchKeyword) throws Exception {
 		return productBoardDAO.selectTitleByKeyword(searchKeyword);
+	}
+
+	@Override
+	public List<Comments> getCommentsListByBoardNo(int boardNo) throws Exception {
+		return productBoardDAO.selectCommentsList(boardNo);
+	}
+
+	@Override
+	public void addComments(Comments comments) throws Exception {
+		productBoardDAO.insertComments(comments);
 	}
 
 }

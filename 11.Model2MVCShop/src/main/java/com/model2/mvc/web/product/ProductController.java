@@ -2,6 +2,7 @@ package com.model2.mvc.web.product;
 
 import java.io.File;
 import java.net.URLDecoder;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,7 +16,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.board.product.ProductBoardService;
+import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
 import com.model2.mvc.service.domain.Product;
 import com.model2.mvc.service.domain.ProductBoard;
@@ -89,8 +94,8 @@ public class ProductController {
 									@ModelAttribute("product") Product product) throws Exception{
 		System.out.println("/addProduct");
 
-		/*String path = "//Users//munmyeonghwan//git//07Model2MVCShop//07.Model2MVCShop(URI,pattern)//WebContent//images//uploadFiles//";*/
-		String path = "C:\\Users\\USER\\git\\10Model2MVCShopAjax\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles\\";
+		String path = "//Users//munmyeonghwan//git//11Model2MVCShop//11.Model2MVCShop//WebContent//images//uploadFiles//";
+//		String path = "C:\\Users\\USER\\git\\10Model2MVCShopAjax\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles\\";
 		
 		
 		MultipartFile uploadfile = productBoard.getUploadFile();
@@ -122,7 +127,8 @@ public class ProductController {
 		modelAndView.addObject("product", product);
 		modelAndView.addObject("productBoard", productBoard);
 		
-		modelAndView.setViewName("forward:/product/successAddProduct.jsp");
+//		modelAndView.setViewName("forward:/product/successAddProduct.jsp");
+		modelAndView.setViewName("redirect:/product/listProduct?menu=search");
 		
 		return modelAndView;
 	}
@@ -202,6 +208,7 @@ public class ProductController {
 		modelAndView.addObject("discount", discount);
 		modelAndView.addObject("user", user);
 		modelAndView.addObject("purchaseCount", purchaseCount);
+		modelAndView.addObject("menu",menu);
 		
 		return modelAndView;
 	}	
@@ -230,6 +237,8 @@ public class ProductController {
 				search.setSearchKeyword(search.getSearchKeyword());
 				System.out.println("POST방식으로 실행, SearchKeyword :: "+search.getSearchKeyword());
 			}
+		}else {
+			search.setSearchKeyword("");
 		}
 		
 		search.setPageSize(page.getPageSize());
@@ -244,6 +253,7 @@ public class ProductController {
 		modelAndView.addObject("discount", map.get("discount"));
 		modelAndView.addObject("resultPage", resultPage);
 		modelAndView.addObject("search", search);
+		modelAndView.addObject("menu", menu);
 		modelAndView.setViewName("forward:/product/listProduct.jsp");
 		
 		return modelAndView;
@@ -281,7 +291,20 @@ public class ProductController {
 		return modelAndView;
 	}
 	
+
 	
+	@RequestMapping(value="json/getCommentsList/{boardNo}",method=RequestMethod.GET)
+	public String getCommentsList(@PathVariable("boardNo")int boardNo,
+									HttpServletRequest request,
+									HttpServletResponse response) throws Exception{
+		System.out.println("json/getCommentsList");
+		
+		List<Comments> commentsList = productBoardService.getCommentsListByBoardNo(boardNo);
+		
+		request.setAttribute("commentsList", commentsList);
+		
+		return "forward:/product-component/commentsList.jsp";
+	}
 	
 
 }

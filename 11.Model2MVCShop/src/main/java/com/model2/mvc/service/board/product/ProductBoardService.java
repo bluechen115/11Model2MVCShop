@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.model2.mvc.common.Search;
+import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
 import com.model2.mvc.service.domain.ProductBoard;
 
@@ -23,5 +24,8 @@ public interface ProductBoardService {
 	
 	public List<ProductBoard> getTitleByKeyword(String searchKeyword) throws Exception;
 	
+	public List<Comments> getCommentsListByBoardNo(int boardNo) throws Exception;
+	
+	public void addComments(Comments comments) throws Exception;
 }
 

@@ -22,7 +22,21 @@
 		<result property="discountBoard" column="discount_board" jdbcType="NUMERIC"/>
 	</resultMap>
 	
+	<resultMap id="commentsSelectMap" type="comments">
+		<result property="boardNo" column="board_no" jdbcType="NUMERIC"/>
+		<result property="userId" column="user_id" jdbcType="VARCHAR"/>
+		<result property="comments" column="comments" jdbcType="VARCHAR"/>
+	</resultMap>
+	
 	<insert id="insertProductBoard" parameterType="productBoard">
+		<selectKey keyProperty="INPUT_SEQ" resultType="integer" order="BEFORE">
+
+		 SELECT 
+		 SEQ_PRODUCT_BOARD.nextval
+		 FROM
+		 DUAL
+		</selectKey>
+		
 		INSERT
 		INTO PRODUCT_BOARD
 		(BOARD_NO,
@@ -33,13 +47,14 @@
 		VIEW_COUNT,
 		image_file)
 		VALUES
-		(SEQ_PRODUCT_BOARD.nextval,
+		(#{INPUT_SEQ},
 		#{title:VARCHAR},
 		#{boardDetail:VARCHAR},
 		#{quantity:NUMERIC},
 		sysdate,
 		#{viewCount:NUMERIC},
 		#{fileName:VARCHAR})
+		
 	</insert>
 	
 	<select id="getProductBoard" parameterType="int" resultMap="productBoardSelectMap">
@@ -182,5 +197,27 @@
 		FROM
 		PRODUCT_BOARD
 	</select>
+	
+	<select id="selectCommentsList" parameterType="int" resultMap="commentsSelectMap">
+		SELECT
+		*
+		FROM
+		COMMENTS
+		WHERE
+		BOARD_NO = #{value}
+	</select>
+	
+	<insert id="insertCommnets" parameterType="comments">
+		INSERT
+		INTO
+		COMMENTS
+		(BOARD_NO,
+		USER_ID,
+		COMMENTS)
+		VALUES
+		(#{boardNo},
+		#{userId},
+		#{comments})
+	</insert>
 	
 </mapper>

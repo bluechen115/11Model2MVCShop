@@ -99,6 +99,8 @@
             <button type="button" class="btn btn-default" name="searchBtn">°Ë»ö</button>
 
              <input type="hidden" id="currentPage" name="currentPage" value="${search.currentPage}" />
+             <input type="hidden" id="orderType" name="orderType" value="${search.orderType}"/>
+             <input type="hidden" id="searchStatus" name="searchStatus" value="${search.searchStatus}"/>
 
           </form>
 
@@ -167,6 +169,10 @@
 						</li>
 			</ul>
 		</div>
+		
+		<input type="hidden" id="currentPage" name="currentPage" value="${search.currentPage}" />
+		<input type="hidden" id="searchCondition" name="searchCondition" value="${search.searchCondition}"/>
+		<input type="hidden" id="searchKeyword" name="searchKeyword" value="${search.searchKeyword}"/>
 		</form>
 		
 	<div class="col-md-10" style="float:left;">
@@ -214,7 +220,7 @@
               <c:set var="i" value="${ i+1 }" />
                 <div class="col-sm-5 col-md-3 thumbnailDiv">
                   <div class="thumbnail">
-                    <img class="img-circle" src="/images/uploadFiles/${productBoard.fileName}" alt="...">
+                    <img class="img-circle" src="/images/uploadFiles/${productBoard.fileName}" alt="..." onError="this.src='http://sign.kedui.net/rtimages/n_sub/no_detail_img.gif'">
                     <div class="caption">
                  	 <h3>${productBoard.title}</h3>
                         <c:if test="${productBoard.boardNo == discount.discountBoard}">

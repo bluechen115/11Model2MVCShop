@@ -193,6 +193,12 @@
 				<img alt="" src="https://t1.daumcdn.net/cfile/tistory/140829464E5E49D02D"
 					style="width:1920px;height:980px;"/>
 			</div> -->
+			<div class="overlay">
+				<video width="300" height="300">
+					<source src="../videos/benzIntro.mp4" type="video/mp4">
+				</video>
+			</div>
+			
 			<div class="container">
 				<div class="row">
 					<div class="main_home">

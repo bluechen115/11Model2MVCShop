@@ -31,13 +31,6 @@
 	</resultMap>
 	
 	<insert id="insertProductBoard" parameterType="productBoard">
-		<selectKey keyProperty="INPUT_SEQ" resultType="integer" order="BEFORE">
-
-		 SELECT 
-		 SEQ_PRODUCT_BOARD.nextval
-		 FROM
-		 DUAL
-		</selectKey>
 		
 		INSERT
 		INTO PRODUCT_BOARD
@@ -49,7 +42,7 @@
 		VIEW_COUNT,
 		image_file)
 		VALUES
-		(#{INPUT_SEQ},
+		(SEQ_PRODUCT_BOARD.nextval,
 		#{title:VARCHAR},
 		#{boardDetail:VARCHAR},
 		#{quantity:NUMERIC},

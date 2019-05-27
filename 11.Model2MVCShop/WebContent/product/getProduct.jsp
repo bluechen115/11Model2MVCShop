@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
@@ -266,19 +268,20 @@
         	&#8361;
             <c:choose>
       				<c:when test="${productBoard.boardNo == discount.discountBoard}">
-      						<td class="ct_write01"><strike>${product.price}</strike>
+      						<td class="ct_write01">
+      						<strike><fmt:formatNumber value="${product.price}" pattern="#,###"/></strike>
       						&nbsp;&nbsp;
       						${product.resultPrice}
       						</td>
       				</c:when>
       				<c:when test="${purchaseCount % 4 == 0 && user.userId != 'admin' }">
-      						<td class="ct_write01"><strike>${product.price}</strike>
+      						<td class="ct_write01"><strike><fmt:formatNumber value="${product.price}" pattern="#,###"/></strike>
       						&nbsp;&nbsp;
-      						${product.resultPrice}
+      						<fmt:formatNumber value="${product.resultPrice}" pattern="#,###"/>
       						</td>
       				</c:when>
       				<c:otherwise>
-      					<td class="ct_write01">${product.resultPrice}</td>
+      					<td class="ct_write01"><fmt:formatNumber value="${product.resultPrice}" pattern="#,###"/></td>
       				</c:otherwise>
       			</c:choose>
       			
@@ -354,7 +357,9 @@
   			method:"POST",
   			data:param,
   			success:function(){
-  				fncGetCommentsList();
+  				setTimeout(function(){  					
+	  				fncGetCommentsList();
+  				},1000);
   			},
   			error:function(){
   				alert("¿¡·¯");
@@ -362,8 +367,6 @@
   		});
   		
   	  	$('#comments').val('');
-  	  	
-  	  
   		
   	});
   	
@@ -375,6 +378,7 @@
   			method:"GET",
   			data:"text",
   			success:function(data,status){
+  				$('#commentListDiv').empty();
   				$('#commentListDiv').html(data);
   			},
   			error:function(){

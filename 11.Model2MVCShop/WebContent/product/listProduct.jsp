@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko" dir="ltr">
@@ -72,9 +73,9 @@
 
         <div class="col-md-6 text-right">
         
-          <form class="form-inline" name="detailForm">
+          <form class="form-inline" id="detailForm" name="detailForm">
           	
-          	<input type="hidden" id="currentPage" name="currentPage" value=""/>
+          	 <!-- <input type="hidden" id="currentPage" name="currentPage" value=""/> -->
 	
 			<div class="custom-control custom-checkbox" style="float:left;">
 			    <input type="checkbox" class="custom-control-input" id="thumbnailCheck">
@@ -97,7 +98,7 @@
 
             <button type="button" class="btn btn-default" name="searchBtn">검색</button>
 
-            <input type="hidden" id="currentPage" name="currentPage" value="${search.currentPage}" />
+             <input type="hidden" id="currentPage" name="currentPage" value="${search.currentPage}" />
 
           </form>
 
@@ -192,7 +193,7 @@
               			<img src="https://static1.squarespace.com/static/513f57ebe4b0970eaf232dec/t/5654b2eae4b05e28e38285cd/1448391403995/"
               											style="height:20px;width:20px;">
               			</c:if></td>
-          			  <td align="left">${productBoard.prodPrice}</td>
+          			  <td align="left"><fmt:formatNumber value="${productBoard.prodPrice}" pattern="#,###"/></td>
           			  <td align="left">${productBoard.boardRegDate}</td>
           			  <td align="left">
           			  	${productBoard.quantity > 0 ? '판매중':'재고없음'}
@@ -242,8 +243,8 @@
 	
 	/* url에서 search 나중에 manage도 추가 수정해야함 */
 	function fncGetList(currentPage) {
-		$("#currentPage").val(currentPage)
-		$("form").attr("method" , "POST").attr("action" , "/product/listProduct?menu=${menu}").submit();
+		$('#currentPage').val(currentPage);
+		$("#detailForm").attr("method" , "POST").attr("action" , "/product/listProduct?menu=${menu}").submit();
 	}
 	
 	   $('#searchKeyword').on('keyup',function(e){

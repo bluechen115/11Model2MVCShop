@@ -94,8 +94,8 @@ public class ProductController {
 									@ModelAttribute("product") Product product) throws Exception{
 		System.out.println("/addProduct");
 
-		String path = "//Users//munmyeonghwan//git//11Model2MVCShop//11.Model2MVCShop//WebContent//images//uploadFiles//";
-//		String path = "C:\\Users\\USER\\git\\10Model2MVCShopAjax\\10.Model2MVCShop(Ajax)\\WebContent\\images\\uploadFiles\\";
+//		String path = "//Users//munmyeonghwan//git//11Model2MVCShop//11.Model2MVCShop//WebContent//images//uploadFiles//";
+		String path = "C:\\Users\\USER\\git\\11Model2MVCShop\\11.Model2MVCShop\\WebContent\\images\\uploadFiles\\";
 		
 		
 		MultipartFile uploadfile = productBoard.getUploadFile();
@@ -221,6 +221,7 @@ public class ProductController {
 									@RequestParam("menu") String menu
 									) throws Exception {
 		System.out.println("/listProduct");
+		System.out.println("::search::"+search.getCurrentPage());
 		
 		page.setPageUnit(pageUnit);
 		

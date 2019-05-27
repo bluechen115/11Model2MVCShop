@@ -26,6 +26,8 @@
 		<result property="boardNo" column="board_no" jdbcType="NUMERIC"/>
 		<result property="userId" column="user_id" jdbcType="VARCHAR"/>
 		<result property="comments" column="comments" jdbcType="VARCHAR"/>
+		<result property="comRegDate" column="com_reg_date" jdbcType="DATE"/>
+		<result property="commentsNo" column="comments_no" jdbcType="NUMERIC"/>
 	</resultMap>
 	
 	<insert id="insertProductBoard" parameterType="productBoard">
@@ -205,6 +207,7 @@
 		COMMENTS
 		WHERE
 		BOARD_NO = #{value}
+		ORDER BY COM_REG_DATE DESC
 	</select>
 	
 	<insert id="insertCommnets" parameterType="comments">
@@ -212,12 +215,16 @@
 		INTO
 		COMMENTS
 		(BOARD_NO,
+		COMMENTS_NO,
 		USER_ID,
-		COMMENTS)
+		COMMENTS,
+		COM_REG_DATE)
 		VALUES
-		(#{boardNo},
-		#{userId},
-		#{comments})
+		(#{boardNo:NUMERIC},
+		SEQ_COMMENTS.nextval,
+		#{userId:VARCHAR},
+		#{comments:VARCHAR},
+		sysdate)
 	</insert>
 	
 </mapper>

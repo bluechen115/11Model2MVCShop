@@ -23,79 +23,7 @@
     	 body >  div.container{ 
         	border: 3px solid #D6CDB7;
             margin-top: 10px;
-            font-family: "Lato", sans-serif;
         }
-        
-	        
-	.main-head{
-	    height: 150px;
-	    background: #FFF;
-	   
-	}
-	
-	.sidenav {
-	    height: 100%;
-	    background-color: #000;
-	    overflow-x: hidden;
-	    padding-top: 20px;
-	}
-	
-	
-	.main {
-	    padding: 0px 10px;
-	}
-	
-	@media screen and (max-height: 450px) {
-	    .sidenav {padding-top: 15px;}
-	}
-	
-	@media screen and (max-width: 450px) {
-	    .login-form{
-	        margin-top: 10%;
-	    }
-	
-	    .register-form{
-	        margin-top: 10%;
-	    }
-	}
-	
-	@media screen and (min-width: 768px){
-	    .main{
-	        margin-left: 40%; 
-	    }
-
-    .sidenav{
-        width: 40%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-
-    .login-form{
-        margin-top: 80%;
-    }
-
-    .register-form{
-        margin-top: 20%;
-    }
-	}
-	
-	
-	.login-main-text{
-	    margin-top: 20%;
-	    padding: 60px;
-	    color: #fff;
-	}
-	
-	.login-main-text h2{
-	    font-weight: 300;
-	}
-	
-	.btn-black{
-	    background-color: #000 !important;
-	    color: #fff;
-	}
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -153,31 +81,53 @@
    	<!-- ToolBar End /////////////////////////////////////-->	
 	
 	<!--  화면구성 div Start /////////////////////////////////////-->
-	
-	<div class="sidenav">
-         <div class="login-main-text">
-            <h2>International<br>Mercedes-Benz</h2>
-            <p>Login or register from here to access.</p>
-         </div>
-      </div>
-      <div class="main">
-         <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-               <form>
-                  <div class="form-group">
-                     <label>User Name</label>
-                     <input type="text" class="form-control" name="userId" id="userId"  placeholder="User Name">
-                  </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-black">Login</button>
-                  <button type="submit" class="btn btn-secondary">Register</button>
-               </form>
-            </div>
-         </div>
-      </div>
+	<div class="container">
+		<!--  row Start /////////////////////////////////////-->
+		<div class="row">
+		
+			<div class="col-md-6">
+					<img src="/images/logo-spring.png" class="img-rounded" width="100%" />
+			</div>
+	   	 	
+	 	 	<div class="col-md-6">
+	 	 	
+		 	 	<br/><br/>
+				
+				<div class="jumbotron">	 	 	
+		 	 		<h1 class="text-center">로 &nbsp;&nbsp;그 &nbsp;&nbsp;인</h1>
+
+			        <form class="form-horizontal">
+		  
+					  <div class="form-group">
+					    <label for="userId" class="col-sm-4 control-label">아 이 디</label>
+					    <div class="col-sm-6">
+					      <input type="text" class="form-control" name="userId" id="userId"  placeholder="아이디" >
+					    </div>
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="password" class="col-sm-4 control-label">패 스 워 드</label>
+					    <div class="col-sm-6">
+					      <input type="password" class="form-control" name="password" id="password" placeholder="패스워드" >
+					    </div>
+					  </div>
+					  
+					  <div class="form-group">
+					    <div class="col-sm-offset-4 col-sm-6 text-center">
+					      <button type="button" class="btn btn-primary"  >로 &nbsp;그 &nbsp;인</button>
+					      <a class="btn btn-primary btn" href="#" role="button">회 &nbsp;원 &nbsp;가 &nbsp;입</a>
+					    </div>
+					  </div>
+			
+					</form>
+			   	 </div>
+			
+			</div>
+			
+  	 	</div>
+  	 	<!--  row Start /////////////////////////////////////-->
+  	 	
+ 	</div>
  	<!--  화면구성 div end /////////////////////////////////////-->
 
 </body>

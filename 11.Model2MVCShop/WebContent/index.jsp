@@ -22,7 +22,7 @@
 <!--Designerd by: http://bootstrapthemes.co-->
 
 <head>
-	<meta charset="utf-8">
+	<meta charset="euc-kr">
 	<title>Rage Freebie HTML5 Landing page</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,6 +76,7 @@
 		});
 		
 	</script>	
+	
 	
 </head>
 
@@ -157,52 +158,25 @@
 				<!-- /.navbar-collapse -->
 			</div>
 
-
-			<!-- Start Side Menu -->
-			<div class="side">
-				<a href="#" class="close-side"><i class="fa fa-times"></i></a>
-				<div class="widget">
-					<h6 class="title">Custom Pages</h6>
-					<ul class="link">
-						<li><a href="#">About</a></li>
-						<li><a href="#">Services</a></li>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Portfolio</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</div>
-				<div class="widget">
-					<h6 class="title">Additional Links</h6>
-					<ul class="link">
-						<li><a href="#">Retina Homepage</a></li>
-						<li><a href="#">New Page Examples</a></li>
-						<li><a href="#">Parallax Sections</a></li>
-						<li><a href="#">Shortcode Central</a></li>
-						<li><a href="#">Ultimate Font Collection</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- End Side Menu -->
-
 		</nav>
 
 		<!--Home Sections-->
 
-		<section id="hello" class="home bg-mega">
+		<section id="hello" class="home bg-mega" style="width:auto; height:980px;">
 			<!-- <div class="overlay">
 				<img alt="" src="https://t1.daumcdn.net/cfile/tistory/140829464E5E49D02D"
 					style="width:1920px;height:980px;"/>
 			</div> -->
-			<div class="overlay">
-				<video width="300" height="300">
-					<source src="../videos/benzIntro.mp4" type="video/mp4">
-				</video>
-			</div>
 			
-			<div class="container">
+				<video  autoplay="autoplay" style="position:absolute; width:100%; height:100%;" muted="muted">
+					<source src="/videos/benzIntro.mp4" type="video/mp4" >
+				</video>
+			
+			
+			<!-- <div class="container">
 				<div class="row">
 					<div class="main_home">
-						<div class="home_text" style="padding-top: 350px;">
+						<div class="home_text" style="margin-top: 350px;">
 							<h1 class="text-white">WE¡¯RE <br /> CREATIVE DEVELOPERS!</h1>
 						</div>
 
@@ -211,9 +185,9 @@
 						</div>
 
 					</div>
-				</div>
+				</div> -->
 				<!--End off row-->
-			</div>
+			<!-- </div> -->
 			<!--End off container -->
 		</section>
 		<!--End off Home Sections-->
@@ -279,6 +253,7 @@
 				<!--End off row-->
 			</div>
 			<!--End off container -->
+			</section>
 			<br />
 			<br />
 			<br />
@@ -286,7 +261,7 @@
 			<hr />
 			<br />
 			<br />
-
+		
 
 		<!--client brand section-->
 		<section id="cbrand" class="cbrand">

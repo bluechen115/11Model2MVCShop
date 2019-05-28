@@ -40,6 +40,7 @@
 	<style>
         body {
             padding-top : 70px;
+            height:70%;
         }
    	</style>
    	
@@ -79,7 +80,7 @@
   	 </div>
  -->
 
- 		 <section id="hello" class="home bg-mega" style="position:relative; top:-20px; left:0;">
+ 		 <section id="hello" class="home bg-mega" style="position:relative; top:-20px; left:0; height:800px;">
 			<!-- <div class="overlay">
 				<img alt="" src="https://t1.daumcdn.net/cfile/tistory/140829464E5E49D02D"
 					style="width:100%;height:auto;"/>
@@ -97,11 +98,11 @@
 
 					</div>
 				</div>
-				End off row
+			
 			</div>
-			End off container
+			
 		</section>
-		End off Home Sections 
+		
 
 	</div>
 </body>

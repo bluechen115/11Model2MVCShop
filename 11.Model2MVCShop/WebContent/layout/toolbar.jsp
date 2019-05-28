@@ -11,7 +11,7 @@
 	<div class="container">
 	       
 		<!-- <a class="navbar-brand" href="/index.jsp">Model2 MVC Shop</a> -->
-		<a class="navbar-brand" href="/index.jsp" style="padding-top:12px;" ><img src="http://www.logospng.com/images/9/apple-logo-png-clipart-best-9849.png" style="width:22px;heigth:22px;"/></a>
+		<a class="navbar-brand" href="/index.jsp" style="padding-top:15px;" ><img src="/images/mercedeslogo.png" style="width:170px;"/></a>
 		
 		<!-- toolBar Button Start //////////////////////// -->
 		<div class="navbar-header">
@@ -34,7 +34,7 @@
 	              <!--  회원관리 DrowDown -->
 	              <li class="dropdown">
 	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                         <span >회원관리</span>
+	                         <span >Account</span>
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
 	               <c:if test="${sessionScope.user.role == 'admin'}">
 		              <li class="dropdown">
 		                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-		                         <span >판매상품관리</span>
+		                         <span >Product</span>
 		                         <span class="caret"></span>
 		                     </a>
 		                     <ul class="dropdown-menu">
@@ -69,7 +69,7 @@
 	              <!-- 구매관리 DrowDown -->
 	              <li class="dropdown">
 	                     <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-	                         <span >상품구매</span>
+	                         <span >Buy</span>
 	                         <span class="caret"></span>
 	                     </a>
 	                     <ul class="dropdown-menu">
@@ -89,7 +89,7 @@
 	             </ul>
 	             
 	             <ul class="nav navbar-nav navbar-right">
-	                <li><a href="#">로그아웃</a></li>
+	                <li><a href="#">logout</a></li>
 	            </ul>
 		</div>
 		<!-- dropdown hover END -->	       
@@ -105,7 +105,7 @@
 		//============= logout Event  처리 =============	
 		 $(function() {
 			//==> DOM Object GET 3가지 방법 ==> 1. $(tagName) : 2.(#id) : 3.$(.className)
-		 	$("a:contains('로그아웃')").on("click" , function() {
+		 	$("a:contains('logout')").on("click" , function() {
 				$(self.location).attr("href","/user/logout");
 				//self.location = "/user/logout"
 			}); 

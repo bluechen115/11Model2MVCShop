@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.model2.mvc.common.Search;
 import com.model2.mvc.service.board.product.ProductBoardService;
 import com.model2.mvc.service.domain.Comments;
 import com.model2.mvc.service.domain.Discount;
@@ -183,6 +184,8 @@ public class ProductRestController {
 		System.out.println("addComments");
 		productBoardService.addComments(comments);
 	}
+	
+	
 		
 	
 }

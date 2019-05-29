@@ -307,5 +307,17 @@ public class ProductController {
 		return "forward:/product-component/commentsList.jsp";
 	}
 	
+	@RequestMapping(value="json/getThumbnailList/{thumbCurrentPage}",method=RequestMethod.GET)
+	public String getThumbnailList(@PathVariable("thumbCurrentPage")int thumbCurrentPage,
+									HttpServletRequest request)throws Exception{
+		Search search = new Search();
+		search.setCurrentPage(thumbCurrentPage);
+		search.setPageSize(pageSize);
+		
+		Map<String, Object> map =(Map<String,Object>) productBoardService.getProductBoardList(search);
+		request.setAttribute("map", map);
+		
+		return "forward:/product-component/thumbnailList.jsp";
+	}
 
 }

@@ -214,8 +214,9 @@
      <br/>
      <br/>
       
+      <!-- 썸네일 -->
      <div class="row thumbnailRow" style="display:none;">
-        <c:set var="i" value="0" />
+       <%--  <c:set var="i" value="0" />
            <c:forEach var="productBoard" items="${list}" >
               <c:set var="i" value="${ i+1 }" />
                 <div class="col-sm-5 col-md-3 thumbnailDiv">
@@ -233,7 +234,7 @@
                   </div>
                 </div>
                 </div>
-       </c:forEach>
+       </c:forEach> --%>
     </div>
 
     </div>
@@ -246,6 +247,7 @@
   	var clickFlag = false;
 	var slideFlag = false;
 	var availableTags = [];
+	var ThumbCurrentPage = 1;
 	
 	/* url에서 search 나중에 manage도 추가 수정해야함 */
 	function fncGetList(currentPage) {
@@ -313,11 +315,6 @@
 				$('#thumbnailCheck').trigger("click");
 			 } //화면이 작아졌을 때, 썸네일 체크가 안되어 있으면 자동 체크.
 			 
-			$(window).scroll(function(){
-				if($(window).scrollTop() == $(document).height()-$(window).height()){
-					
-				}
-			});
 		 }
 		 
 	  });
@@ -339,6 +336,26 @@
 		  $("form[name='detailForm']").attr("method","POST").attr("action","/product/listProduct?menu=${menu}").submit();
 	  });
 	  
+	  
+	  /* 무한스크롤 */
+	   $(window).scroll(function() {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        	ThumbCurrentPage = ThumbCurrentPage + 1; /* 다음페이지를 넘기기 */
+        	
+			$.ajax({
+				url:"json/getThumbnailList/{thumbCurrentPage}",
+				method:"GET",
+				data:"text",
+				success:function(){
+					
+				},
+				error:function(){
+					alert("error");
+				}
+			});			
+
+        }
+    });
 	 
 	  
   </script>

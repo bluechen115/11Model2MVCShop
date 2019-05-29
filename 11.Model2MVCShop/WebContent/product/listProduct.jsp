@@ -238,8 +238,10 @@
     </div>
 
     </div>
-
+	
+	<div id="pageNavigatorDiv">
     <jsp:include page="../common/pageNavigator_new.jsp"/>
+    </div>
 
   </body>
   
@@ -297,10 +299,28 @@
 			  $('#listTb').css('display','none');
 			  $('#searchDiv').css('display','none');
 			  $('.thumbnailRow').css('display','block');
+			  $('#pageNavigatorDiv').css('display','none');
+			  	
+			  ThumbCurrentPage = 1; //현재 페이지를 1로 초기화
+			  
+			  $.ajax({
+				 url:"json/getThumbnailList/"+ThumbCurrentPage,
+				 method:"GET",
+				 data:"text",
+				 success:function(data){
+					 	$('.thumbnailRow').html(data);
+				 },
+				 error:function(){
+					 alert("error");
+				 }
+				 
+			  });
+			  
 		  }else{
 			  $('#listTb').css('display','');
 			  $('#searchDiv').css('display','');
 			  $('.thumbnailRow').css('display','none');
+			  $('#pageNavigatorDiv').css('display','');
 		  }
 	  });
 	  
@@ -337,22 +357,23 @@
 	  });
 	  
 	  
-	  /* 무한스크롤 */
+	  /* 썸네일 상태에서 무한스크롤 */
 	   $(window).scroll(function() {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         	ThumbCurrentPage = ThumbCurrentPage + 1; /* 다음페이지를 넘기기 */
         	
-			$.ajax({
-				url:"json/getThumbnailList/{thumbCurrentPage}",
-				method:"GET",
-				data:"text",
-				success:function(){
-					
-				},
-				error:function(){
-					alert("error");
-				}
-			});			
+        	$.ajax({
+				 url:"json/getThumbnailList/"+ThumbCurrentPage,
+				 method:"GET",
+				 data:"text",
+				 success:function(data){
+					 	$('.thumbnailRow').append(data);
+				 },
+				 error:function(){
+					 alert("error");
+				 }
+				 
+			  });
 
         }
     });

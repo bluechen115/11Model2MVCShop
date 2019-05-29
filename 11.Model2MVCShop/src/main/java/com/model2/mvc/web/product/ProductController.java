@@ -94,8 +94,8 @@ public class ProductController {
 									@ModelAttribute("product") Product product) throws Exception{
 		System.out.println("/addProduct");
 
-//		String path = "//Users//munmyeonghwan//git//11Model2MVCShop//11.Model2MVCShop//WebContent//images//uploadFiles//";
-		String path = "C:\\Users\\USER\\git\\11Model2MVCShop\\11.Model2MVCShop\\WebContent\\images\\uploadFiles\\";
+		String path = "//Users//munmyeonghwan//git//11Model2MVCShop//11.Model2MVCShop//WebContent//images//uploadFiles//";
+//		String path = "C:\\Users\\USER\\git\\11Model2MVCShop\\11.Model2MVCShop\\WebContent\\images\\uploadFiles\\";
 		
 		
 		MultipartFile uploadfile = productBoard.getUploadFile();
@@ -310,6 +310,7 @@ public class ProductController {
 	@RequestMapping(value="json/getThumbnailList/{thumbCurrentPage}",method=RequestMethod.GET)
 	public String getThumbnailList(@PathVariable("thumbCurrentPage")int thumbCurrentPage,
 									HttpServletRequest request)throws Exception{
+		System.out.println("json/getThumbnailList");
 		Search search = new Search();
 		search.setCurrentPage(thumbCurrentPage);
 		search.setPageSize(pageSize);

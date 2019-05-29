@@ -28,6 +28,7 @@
 		<result property="comments" column="comments" jdbcType="VARCHAR"/>
 		<result property="comRegDate" column="com_reg_date" jdbcType="DATE"/>
 		<result property="commentsNo" column="comments_no" jdbcType="NUMERIC"/>
+		<result property="starRating" column="star_rating" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	<insert id="insertProductBoard" parameterType="productBoard">
@@ -211,13 +212,15 @@
 		COMMENTS_NO,
 		USER_ID,
 		COMMENTS,
-		COM_REG_DATE)
+		COM_REG_DATE,
+		STAR_RATING)
 		VALUES
 		(#{boardNo:NUMERIC},
 		SEQ_COMMENTS.nextval,
 		#{userId:VARCHAR},
 		#{comments:VARCHAR},
-		sysdate)
+		sysdate,
+		#{starRating:VARCHAR})
 	</insert>
 	
 </mapper>

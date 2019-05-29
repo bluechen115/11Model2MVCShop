@@ -13,6 +13,7 @@
   	<!-- 참조 : http://getbootstrap.com/css/   참조 -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+
   	<!--  ///////////////////////// Bootstrap, jQuery CDN ////////////////////////// -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
@@ -30,6 +31,9 @@
 	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	
+	
+
 	
      <style>
      		body {
@@ -160,6 +164,20 @@
 			   .card-inner{
 			    margin-left: 4rem;
 			}
+			
+			/* 별점  */
+		.star_rating {font-size:0; letter-spacing:-4px;}
+		.star_rating a {
+			font-size:22px;
+			letter-spacing:0;
+			display:inline-block;
+			margin-left:5px;
+			color:#ccc;
+			text-decoration:none;
+		}
+		.star_rating a:first-child {margin-left:0;}
+		.star_rating a.on {color:#777;}
+
 			            
      </style>
      
@@ -317,16 +335,32 @@
 	   		<div class="col-md-12">
 				<div class="widget-area no-padding blank">
 					<div class="status-upload">
-					<form id="commentsForm">
+					
+					<form id="commentsForm"> <!-- Comment Form -->
 						<input type="hidden" name="boardNo" value="${productBoard.boardNo}"/>
 						<input type="hidden" name="userId" value="${user.userId}"/>
+						<input type="hidden" id="starRating" name="starRating" value="3"/>
 						<textarea id="comments" name="comments" placeholder="고객님의 소중한 상품평을 남겨주세요." ></textarea>
-						<button id="commentsBtn" type="button" class="btn btn-success green"><i class="fa fa-share"></i>등록</button>
+						
+						<!-- 별점  -->
+						<p class="star_rating" style="float:left; margin-left:20px; margin-top:3px;">
+						    <a href="#" class="on" id="1">★</a>
+						    <a href="#" class="on" id="2">★</a>
+						    <a href="#" class="on" id="3">★</a>
+						    <a href="#" id="4">★</a>
+						    <a href="#" id="5">★</a>
+						</p>
+						<!-- 별점 끝 -->
+						
+						<button id="commentsBtn" type="button" class="btn btn-success green" ><i class="fa fa-share"></i>등록</button>
 						</form>
 					</div><!-- Status Upload  -->
 				</div><!-- Widget Area -->
 			</div>
 		</div>
+		
+		
+		
 	</div> <!-- Container End -->
    
    <br/>
@@ -390,6 +424,15 @@
   	$(function(){
  		fncGetCommentsList();
  	});
+  	
+  	/* 별점 */
+  	$( ".star_rating a" ).click(function() {
+				 $(this).parent().children("a").removeClass("on");
+				 $(this).addClass("on").prevAll("a").addClass("on");
+				 $('#starRating').val($(this).attr('id'));
+				 return false;
+	});
+
   
   </script>
 </html>

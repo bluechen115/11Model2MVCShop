@@ -13,10 +13,9 @@
         	    <div class="col-md-12">
         	        <p>
         	            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong><%=commentsList.get(i).getUserId()%></strong></a>
+        	            <%for(int j=0;j<Integer.parseInt(commentsList.get(i).getStarRating());j++){ %>
         	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                       	<%}%>
 
         	       </p>
         	       <div class="clearfix"></div>

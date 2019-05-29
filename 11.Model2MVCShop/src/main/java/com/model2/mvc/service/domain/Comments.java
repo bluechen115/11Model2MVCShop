@@ -7,6 +7,7 @@ public class Comments {
 	private String userId;
 	private String comments;
 	private String comRegDate;
+	private String starRating;
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -38,10 +39,16 @@ public class Comments {
 	public void setComRegDate(String comRegDate) {
 		this.comRegDate = comRegDate;
 	}
+	public String getStarRating() {
+		return starRating;
+	}
+	public void setStarRating(String starRating) {
+		this.starRating = starRating;
+	}
 	@Override
 	public String toString() {
 		return "Comments [boardNo=" + boardNo + ", commentsNo=" + commentsNo + ", userId=" + userId + ", comments="
-				+ comments + ", comRegDate=" + comRegDate + "]";
+				+ comments + ", comRegDate=" + comRegDate + ", starRating=" + starRating + "]";
 	}
 	
 	

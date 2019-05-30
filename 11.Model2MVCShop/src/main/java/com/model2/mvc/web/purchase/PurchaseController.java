@@ -1,5 +1,6 @@
 package com.model2.mvc.web.purchase;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -271,6 +273,32 @@ public class PurchaseController {
 		purchase=purchaseService.getPurchase(purchase.getTranNo());
 		
 		return "redirect:/product/listProduct?menu=manage";
+	}
+	
+	////////구매 및 취소 이력 Rest//////////
+	@RequestMapping("json/getPurchaseUserHistory/{userId}")
+	public String getPurchaseUserHistory(@PathVariable("userId") String userId,
+										HttpServletRequest request) throws Exception{
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		List<Purchase> purchaseList = purchaseService.getPurchaseListByUserId(userId);
+		
+		int totalCount = purchaseService.getCountPurchase(userId);
+		int cancelCount = purchaseService.getCountCancelPurchase(userId);
+		
+		map.put("purchaseList", purchaseList);
+		map.put("totalCount", totalCount);
+		map.put("cancelCount", cancelCount);
+		map.put("cancelList", purchaseService.getCancelListByUserId(userId));
+		map.put("userId", userId);
+		
+	
+		System.out.println("RestController map :: "+purchaseList.get(0).getTranNo());
+		
+		request.setAttribute("map", map);
+		
+		return "/user-component/getUserHistory.jsp";
 	}
 	
 }

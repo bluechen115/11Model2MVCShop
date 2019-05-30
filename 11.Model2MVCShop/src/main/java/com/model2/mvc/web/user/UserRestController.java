@@ -53,4 +53,22 @@ public class UserRestController {
 		
 		return dbUser;
 	}
+	
+//	실시간 중복체크 //
+	@RequestMapping(value="json/checkDuplication/{userId}",method=RequestMethod.GET)
+	public String checkDuplicationGet(@PathVariable("userId") String userId) throws Exception{
+		System.out.println("/user/json/checkDuplication : Get");
+		
+		boolean result=userService.checkDuplication(userId);
+		String resultStr="";
+		
+		if(result) {
+			resultStr="yes";
+		}else {
+			resultStr="no";
+		}
+		
+		System.out.println("resultStr :: "+resultStr);
+		return resultStr;
+	}
 }

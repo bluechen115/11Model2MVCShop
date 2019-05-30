@@ -37,8 +37,24 @@
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
 	  body {
-            padding-top : 50px;
+            padding-top : 50px;            
         }
+       
+      container{
+      		position:relative;
+      }
+        
+      #purchaseHistoryDiv{ 
+ 						position: absolute;
+ 						left:50%;
+ 						right:50%;
+ 						margin:0 auto;
+ 						margin-left: -250px;
+ 						margin-top: -350px;
+ 						padding: 2px;
+ 						background-color: rgba( 255, 255, 255, 0.5 );
+ 						z-index:2;
+ 		}
     </style>
     
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -190,8 +206,8 @@
 			<c:set var="i" value="${ i+1 }" />
 			<tr>
 			  <td align="center">${ i }</td>
-			  <td align="left"  title="Click : 회원정보 확인">${user.userId}</td>
-			  <td align="left">${user.userName}</td>
+			  <td align="left"  title="Click : 회원정보 확인" class="userIdTd">${user.userId}</td>
+			  <td align="left" class="userNameTd">${user.userName}</td>
 			  <td align="left">${user.email}</td>
 			  <td align="left">
 			  	<i class="glyphicon glyphicon-ok" id= "${user.userId}"></i>
@@ -205,8 +221,13 @@
       </table>
 	  <!--  table End /////////////////////////////////////-->
 	  
+	
+		  
  	</div>
  	<!--  화면구성 div End /////////////////////////////////////-->
+ 	
+ 	 <!-- 구매이력 -->
+	<div class="purchaseHistoryDiv" id='purchaseHistoryDiv'></div>
  	
  	
  	<!-- PageNavigation Start... -->
@@ -214,5 +235,26 @@
 	<!-- PageNavigation End... -->
 	
 </body>
+
+<script>
+	$('.userNameTd').on('click',function(){
+		var userId = $(this).parent().children('.userIdTd').html();
+		
+		$('#purchaseHistoryDiv').css('display','block');
+		
+		$.ajax({
+			url:"/purchase/json/getPurchaseUserHistory/"+userId,
+			method:"GET",
+			data:"text",
+			success:function(data,status){
+				 $('#purchaseHistoryDiv').html(data);
+			},
+			error:function(){
+				alert('error');
+			}
+			
+		}); 
+	});
+</script>
 
 </html>

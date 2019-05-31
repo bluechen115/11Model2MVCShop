@@ -12,21 +12,11 @@
 %> 
 
 
-	<link rel="stylesheet" 
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<!-- Optional theme -->
-	<link rel="stylesheet" 
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	
 	<style>
 		#userHistoryDiv{
-				position:absolute;
-		}
-		.container{width:260px;
+				width:260px;
 		}
 		
 		.panel-title{text-align:center;
@@ -55,26 +45,40 @@
 		          <span class="badge badge-primary badge-pill"><%=totalCount%></span>
 		        </li>
 		        
-		        <ul class="list-group" id="purchaseUl">
-		        <%for(int i=0;i<totalCount;i++){%>
-		        <li class="list-group-item d-flex justify-content-between align-items-center">
-		        	<span style="height: 20px;">주문번호 : <%=purchaseList.get(i).getTranNo()%></span>
-		        </li>
-		        <%}%>
-		        </ul>
+		        <% if(totalCount>0){ %>
 		        
-		        <li class="list-group-item d-flex justify-content-between align-items-center pointerLi">
-		        	  구매취소건
-		          <span class="badge badge-primary badge-pill"><%=cancelCount%></span>
-		        </li>
+		        	<ul class="list-group" id="purchaseUl">
+			        <%for(int i=0;i<totalCount;i++){%>
+			        <li class="list-group-item d-flex justify-content-between align-items-center">
+			        	<span style="height: 20px;">주문번호 : <%=purchaseList.get(i).getTranNo()%></span>
+			        </li>
+			        <%}%>
+			        </ul>
+			        
+			        <li class="list-group-item d-flex justify-content-between align-items-center pointerLi">
+			        	  구매취소건
+			          <span class="badge badge-primary badge-pill"><%=cancelCount%></span>
+			        </li>
+			        
+			        <ul class="list-group" id="cancelUl">
+			        <%for(int i=0;i<cancelCount;i++){%>
+			        <li class="list-group-item d-flex justify-content-between align-items-center">
+			        	<span style="height: 20px;">주문번호 : <%=cancelList.get(i).getTranNo()%></span>
+			        </li>
+			        <%}%>
+			        </ul>
 		        
-		        <ul class="list-group" id="cancelUl">
-		        <%for(int i=0;i<cancelCount;i++){%>
-		        <li class="list-group-item d-flex justify-content-between align-items-center">
-		        	<span style="height: 20px;">주문번호 : <%=cancelList.get(i).getTranNo()%></span>
-		        </li>
-		        <%}%>
-		        </ul>
+		        <%}else{%>
+		        				        
+			        <li class="list-group-item d-flex justify-content-between align-items-center pointerLi">
+			        	  구매취소건
+			          <span class="badge badge-primary badge-pill"><%=cancelCount%></span>
+			        </li>
+			        
+			       
+		        <%} %>
+		        
+		        
 		        
 		        <li class="list-group-item d-flex justify-content-between align-items-center">
 		       	   미정

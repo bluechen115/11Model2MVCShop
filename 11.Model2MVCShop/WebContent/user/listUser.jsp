@@ -37,24 +37,34 @@
 	<!--  ///////////////////////// CSS ////////////////////////// -->
 	<style>
 	  body {
-            padding-top : 50px;            
+            padding-top : 50px;
+           	z-index:0;             
         }
        
-      container{
+      .container{
       		position:relative;
+      		z-index:1;
       }
         
       #purchaseHistoryDiv{ 
+      					
+ 						
  						position: absolute;
  						left:50%;
  						right:50%;
  						margin:0 auto;
- 						margin-left: -250px;
+ 						margin-left: -140px;
  						margin-top: -350px;
  						padding: 2px;
  						background-color: rgba( 255, 255, 255, 0.5 );
  						z-index:2;
  		}
+ 		
+ 	 .userNameTd{
+ 	 			cursor:pointer;
+ 	 }
+ 		
+ 		
     </style>
     
      <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -142,6 +152,9 @@
 	<jsp:include page="/layout/toolbar.jsp" />
    	<!-- ToolBar End /////////////////////////////////////-->
 	
+	<!-- 화면 전체를 덮는 div -->
+	<div id="wrapDiv">
+	
 	<!--  화면구성 div Start /////////////////////////////////////-->
 	<div class="container">
 	
@@ -227,9 +240,10 @@
  	<!--  화면구성 div End /////////////////////////////////////-->
  	
  	 <!-- 구매이력 -->
+
 	<div class="purchaseHistoryDiv" id='purchaseHistoryDiv'></div>
- 	
- 	
+
+ 	</div> <!-- 화면전체를 덮는 Div 끝 -->
  	<!-- PageNavigation Start... -->
 	<jsp:include page="../common/pageNavigator_new.jsp"/>
 	<!-- PageNavigation End... -->
@@ -247,7 +261,7 @@
 			method:"GET",
 			data:"text",
 			success:function(data,status){
-				 $('#purchaseHistoryDiv').html(data);
+				$('#purchaseHistoryDiv').html(data);
 			},
 			error:function(){
 				alert('error');

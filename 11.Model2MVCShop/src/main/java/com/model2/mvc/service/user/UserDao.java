@@ -11,9 +11,15 @@ public interface UserDao {
 	
 	// INSERT
 	public void addUser(User user) throws Exception ;
+	
+	//KAKAO INSERT
+	public void kakaoInsertUser(User user) throws Exception;
 
 	// SELECT ONE
 	public User getUser(String userId) throws Exception ;
+	
+	// KAKAO SELECT ONE
+	public User kakaoSelectUser(String userId) throws Exception;
 
 	// SELECT LIST
 	public List<User> getUserList(Search search) throws Exception ;

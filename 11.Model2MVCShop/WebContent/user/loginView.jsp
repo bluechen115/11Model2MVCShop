@@ -96,6 +96,10 @@
 	    background-color: #000 !important;
 	    color: #fff;
 	}
+	
+	#kakaoLogin{
+		cursor: pointer;
+	}
     </style>
     
     <!--  ///////////////////////// JavaScript ////////////////////////// -->
@@ -136,6 +140,11 @@
 			});
 		});
 		
+		$(function(){
+			$('#kakaoLogin').on('click',function(){
+				self.location="https://kauth.kakao.com/oauth/authorize?client_id=78fb0165a6ad931048b1bd9c873ef6fd&redirect_uri=http://localhost:8080/user/json/kakaologin&response_type=code";
+			});
+		});
 		
 		
 	</script>		
@@ -174,6 +183,7 @@
                   </div>
                   <button type="submit" class="btn btn-black">Login</button>
                   <button type="submit" class="btn btn-secondary">Register</button>
+                  <img id="kakaoLogin" alt="" src="/assets/images/clients/kakao_login_btn_small.png">
                </form>
             </div>
          </div>

@@ -18,12 +18,22 @@
 		<result property="email" 			column="email" 				jdbcType="NUMERIC"  />
 		<result property="regDate" 		column="reg_date" 			jdbcType="DATE" />
 	</resultMap>
+
 	
 	<!-- SQL : INSERT -->
 	<insert 	id="addUser"		parameterType="user" >
 	 	INSERT
 		INTO users( user_id , user_name , password , role , ssn, cell_phone, addr, email , reg_date) 
-		VALUES	 (	#{userId} , #{userName} , #{password} , 'user' , #{ssn:VARCHAR} , 
+		VALUES	 (	#{userId} , #{userName:VARCHAR} , #{password:VARCHAR} , 'user' , #{ssn:VARCHAR} , 
+							#{phone:VARCHAR} , #{addr:VARCHAR} , #{email:VARCHAR} , SYSDATE )
+	 </insert>
+	 
+	 <!-- SQL : KAKAO INSERT -->
+	 <insert id="kakaoAddUser" parameterType="kakaouser">
+	 	INSERT
+		INTO KAKAO_USER
+		( user_id , user_name ,role , ssn, cell_phone, addr, email , reg_date) 
+		VALUES	 (	#{userId} , #{userName:VARCHAR} , 'user' , #{ssn:VARCHAR} , 
 							#{phone:VARCHAR} , #{addr:VARCHAR} , #{email:VARCHAR} , SYSDATE )
 	 </insert>
 	 
@@ -32,6 +42,14 @@
 		SELECT
 		user_id , user_name , password , role ,  cell_phone ,  addr , email , reg_date 		
 		FROM users 
+		WHERE user_id = #{value}
+	 </select>
+	 
+	 <!-- SQL : KAKAO SELECT ONE -->
+	 <select 	id="kakaoGetUser"	parameterType="string"	resultMap="userSelectMap">
+		SELECT
+		user_id , user_name ,role , ssn, cell_phone, addr, email , reg_date
+		FROM KAKAO_USER 
 		WHERE user_id = #{value}
 	 </select>
 	 

@@ -63,4 +63,15 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+
+	@Override
+	public void kakaoAddUser(User user) throws Exception {
+		userDao.kakaoInsertUser(user);
+		
+	}
+
+	@Override
+	public User kakaoGetUser(String userId) throws Exception {
+		return userDao.kakaoSelectUser(userId);
+	}
 }

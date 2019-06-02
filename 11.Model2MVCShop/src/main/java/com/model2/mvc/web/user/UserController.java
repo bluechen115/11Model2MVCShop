@@ -3,8 +3,10 @@ package com.model2.mvc.web.user;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
+import com.model2.mvc.service.domain.KakaoUser;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserService;
 
@@ -123,6 +126,50 @@ public class UserController {
 		
 		return "redirect:/index.jsp";
 	}
+	
+//	KAKAO ·Î±×ÀÎ //
+	@RequestMapping(value="/json/kakaologin",produces="application/json",method= {RequestMethod.GET,RequestMethod.POST})
+	public String kakaoLogin(@RequestParam("code")String code,
+								HttpServletRequest request,
+								HttpServletResponse response,
+								HttpSession session) throws Exception{
+		
+		  System.out.println("/json/kakaologin");
+		
+		  JsonNode token = KakaoLogin.getAccessToken(code);
+
+		  JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
+		  System.out.println(profile);
+		  
+		  KakaoUser vo = KakaoLogin.changeData(profile);
+		  vo.setUser_snsId("k"+vo.getUser_snsId());
+
+		 
+		  
+		  User user = new User();
+		  if(userService.kakaoGetUser(vo.getUser_snsId())==null) {
+			  
+			  
+			  user.setUserName(vo.getUser_name());
+			  user.setUserId(vo.getUser_snsId());
+			  
+			  userService.kakaoAddUser(user);
+		  }
+		  
+		  User dbUser = new User();
+		  dbUser = userService.kakaoGetUser(vo.getUser_snsId());
+		  
+		  System.out.println(session);
+		  session.setAttribute("user", dbUser);
+		  System.out.println(vo.toString());
+		  
+
+//		  vo = service.kakaoLogin(vo);  
+		
+		return "redirect:/index.jsp";
+	}
+	
+
 		
 	
 	@RequestMapping( value="logout", method=RequestMethod.GET )

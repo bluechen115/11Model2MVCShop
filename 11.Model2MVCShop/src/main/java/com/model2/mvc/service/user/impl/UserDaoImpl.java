@@ -50,4 +50,14 @@ public class UserDaoImpl implements UserDao{
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("UserMapper.getTotalCount", search);
 	}
+
+	@Override
+	public void kakaoInsertUser(User user) throws Exception {
+		sqlSession.insert("UserMapper.kakaoAddUser", user);
+	}
+
+	@Override
+	public User kakaoSelectUser(String userId) throws Exception {
+		return sqlSession.selectOne("UserMapper.kakaoGetUser", userId);
+	}
 }

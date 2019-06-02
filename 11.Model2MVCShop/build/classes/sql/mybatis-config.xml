@@ -22,6 +22,7 @@
 		<typeAlias alias="code" type="com.model2.mvc.service.domain.Code"/>
 		<typeAlias alias="productBoard" type="com.model2.mvc.service.domain.ProductBoard"/>
 		<typeAlias alias="comments" type="com.model2.mvc.service.domain.Comments"/>
+		<typeAlias alias="kakaouser" type="com.model2.mvc.service.domain.KakaoUser"/>
 	</typeAliases>
 	
 	 <!-- SQL Definition :: file include -->

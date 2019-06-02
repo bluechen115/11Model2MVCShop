@@ -249,7 +249,7 @@
           <strong>상품이미지</strong>
         </div>
         <div class="col-xs-8 col-md-4">
-          <img 	src= "/images/uploadFiles/${productBoard.fileName}" style="width:500px;height:500px;"/>
+          <img 	src= "/images/uploadFiles/${productBoard.fileName}" onError="this.src='http://sign.kedui.net/rtimages/n_sub/no_detail_img.gif'" style="width:500px;height:500px;"/>
         </div>
       </div>
       <hr/>
@@ -319,7 +319,7 @@
 
       <div class="row">
         <div class="col-md-12 text-center">
-          <c:if test="${user.userId != 'admin' }">
+          <c:if test="${user.userId != 'admin' && productBoard.quantity > 0}">
         	  <button type="button" class="btn btn-primary" id="buyBtn">구매</button>
           </c:if>
         	  <button type="button" class="btn btn-danger" id="historyBack">이전</button>

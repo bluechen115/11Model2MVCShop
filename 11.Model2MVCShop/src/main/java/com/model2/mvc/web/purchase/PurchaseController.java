@@ -64,9 +64,12 @@ public class PurchaseController {
 	public String addPurchase(@ModelAttribute("purchase") Purchase purchase ,
 								@RequestParam("buyerId") String buyerId,
 								@RequestParam("boardNo") int boardNo,
-								Model model) throws Exception{
+								Model model,
+								HttpServletRequest request,
+								HttpSession session) throws Exception{
 		
-		User user=userService.getUser(buyerId);
+//		User user=userService.getUser(buyerId);
+		User user = (User)session.getAttribute("user");
 		
 		Map<String, Object> map = productBoardService.getProductBoardByBoardNo(boardNo);
 		ProductBoard productBoard = (ProductBoard)map.get("productBoard");
@@ -101,6 +104,7 @@ public class PurchaseController {
 		}
 		
 		model.addAttribute("purchase", purchase);
+		
 		
 		return "forward:/purchase/listPurchase.jsp";
 	}

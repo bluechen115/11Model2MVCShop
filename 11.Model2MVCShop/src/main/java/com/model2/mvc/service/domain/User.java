@@ -20,6 +20,8 @@ public class User {
 	private String phone1;
 	private String phone2;
 	private String phone3;
+	
+	private String user_profileImagePath;
 
 	
 	
@@ -97,6 +99,16 @@ public class User {
 	}
 	public String getPhone3() {
 		return phone3;
+	}
+	
+	
+
+	public String getUser_profileImagePath() {
+		return user_profileImagePath;
+	}
+
+	public void setUser_profileImagePath(String user_profileImagePath) {
+		this.user_profileImagePath = user_profileImagePath;
 	}
 
 	@Override
